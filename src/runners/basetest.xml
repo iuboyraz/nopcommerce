@@ -3,7 +3,7 @@
 <suite name="mySuit" parallel="tests" thread-count="3">
     <test name="baseTest">
         <parameter name="webDriver" value="chrome"></parameter>
-
+        <parameter name="searchText" value="Adobe Photoshop CS4"></parameter>
         <classes>
             <class name="main"/>
         </classes>
