@@ -12,9 +12,6 @@ public class POMElements {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//a[@class='zak-button']")
-    public WebElement demoButton;
-
     @FindBy(xpath = "(//div[@class='header-links']//a)[2]")
     public WebElement login;
 
