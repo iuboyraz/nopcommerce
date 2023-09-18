@@ -86,10 +86,10 @@ public class main {
         driver.navigate().to(baseUrl);
     }
 
-    // @assigned=Umut Can Güzel
+    // @assigned=Umut Can Gï¿½zel
     @Test
     @Parameters("searchText")
-    public void Us7(String searchText){
+    public void Us8Search(String searchText){
         elements.login.click();
         elements.email.sendKeys("aliveli123@gmail.com");
         elements.password.sendKeys("aliveli123");
@@ -102,7 +102,7 @@ public class main {
         Assert.assertTrue(elements.bookName.getText().contains(searchText));
     }
 
-    // @assigned=Ümit Boyraz
+    // @assigned=ï¿½mit Boyraz
     @Test
     void US4TabMenu01() {
         _softAssert.assertTrue(driver.getCurrentUrl().contains("https://demo.nopcommerce.com/"), "You've not accessed main page!");
