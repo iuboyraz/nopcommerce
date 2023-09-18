@@ -5,13 +5,13 @@ Techno Study Batch 4 Group 5 Friday Project. We use JAVA and Test Tools on this 
 Domain: https://demo.nopcommerce.com/
 
 ## Team
-- ? Emrullah Tan�ma - QA Lead
-- ? Samet �amo�lu - Tester
-- ? �mit Boyraz - Tester
-- ? Selen Dilek - Tester
-- ? Rustam Roz - Tester
-- ? Umut Can G�zel - Tester
-- ? Yakup Y�ce - Tester
+- 🔥 Emrullah Tanıma - QA Lead
+- 🔥 Samet Çamoğlu - Tester
+- 🔥 Ümit Boyraz - Tester
+- 🔥 Selen Dilek - Tester
+- 🔥 Rustam Roz - Tester
+- 🔥 Umut Can Güzel - Tester
+- 🔥 Yakup Yüce - Tester
 
 Getting Started
 ---------------
@@ -73,4 +73,4 @@ List of Dependencies
 This project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
 
-### Enjoy! ?
+### Enjoy! 👋
