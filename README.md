@@ -1,4 +1,4 @@
-# OpenMRS
+# nopcommerce
 
 Techno Study Batch 4 Group 5 Friday Project. We use JAVA and Test Tools on this project.
 
