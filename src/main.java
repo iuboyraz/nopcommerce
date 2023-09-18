@@ -66,6 +66,22 @@ public class main {
         elements = new POMElements(driver);
     }
 
+    @Test
+    @Parameters("searchText")
+    public void Us7(String searchText){
+        elements.login.click();
+        elements.email.sendKeys("aliveli123@gmail.com");
+        elements.password.sendKeys("aliveli123");
+        elements.loginButton.click();
+        elements.searchInput.sendKeys(searchText+Keys.ENTER);
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, 250);");
+        elements.bookName.getText();
+
+        Assert.assertTrue(elements.bookName.getText().contains(searchText));
+
+
+    }
     @BeforeMethod
     void openUri() {
         driver.navigate().to(baseUrl);

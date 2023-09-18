@@ -14,4 +14,22 @@ public class POMElements {
 
     @FindBy(xpath = "//a[@class='zak-button']")
     public WebElement demoButton;
+
+    @FindBy(xpath = "(//div[@class='header-links']//a)[2]")
+    public WebElement login;
+
+    @FindBy(id = "Email")
+    public WebElement email;
+
+    @FindBy(id = "Password")
+    public WebElement password;
+
+    @FindBy(xpath = "//button[@class='button-1 login-button']")
+    public WebElement loginButton;
+
+    @FindBy(xpath = "//input[@id='small-searchterms']")
+    public WebElement searchInput;
+
+    @FindBy(xpath = "//div[@class='details']//a")
+    public WebElement bookName;
 }
