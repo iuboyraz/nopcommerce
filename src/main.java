@@ -68,7 +68,7 @@ public class main {
 
     @Test
     @Parameters("searchText")
-    public void Us7(String searchText){
+    public void Us8Seaerch(String searchText){
         elements.login.click();
         elements.email.sendKeys("aliveli123@gmail.com");
         elements.password.sendKeys("aliveli123");
