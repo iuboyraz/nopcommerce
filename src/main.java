@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 import java.io.File;
@@ -185,6 +186,31 @@ public class main {
         }
         _softAssert.assertAll();
     }
+
+    //Selen Dilek
+    @Test
+    @Parameters("product")
+    void US4TabMenu02() {
+
+        Actions actions = new Actions(driver);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        SoftAssert _softAssert = new SoftAssert();
+
+        for (int i = 0; i < elements.top_Menu.size(); i++) {
+
+            new Actions(driver).moveToElement(elements.top_Menu.get(i)).build().perform();
+
+            for (WebElement item : elements.products_MenuItem) {
+
+                System.out.println("item.getText() = " + item.getText());
+
+            }
+
+        }
+    }
+
+
+
 
     @AfterClass
     public void close() {
