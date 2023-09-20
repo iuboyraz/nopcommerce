@@ -25,8 +25,11 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.testng.Assert.assertTrue;
 
 public class main {
     public WebDriver driver;
@@ -86,7 +89,7 @@ public class main {
         driver.navigate().to(baseUrl);
     }
 
-    // @assigned=Umut Can G�zel
+   /* // @assigned=Umut Can G�zel
     @Test
     @Parameters("searchText")
     public void Us8Search(String searchText){
@@ -184,9 +187,36 @@ public class main {
             }
         }
         _softAssert.assertAll();
-    }
+    }*/
+    @Test
+    @Parameters("rustam")
+    public void Us7computerBuilt(String ramHDD) throws InterruptedException {
+        elements.login.click();
+        elements.email.sendKeys("aliveli123@gmail.com");
+        elements.password.sendKeys("aliveli123");
+        elements.loginButton.click();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(elements.computers).perform();
+        elements.desktop.click();
+        elements.buildComputer.click();
 
-    @AfterClass
+        Random RAM= new Random();
+        int ramIndex= RAM.nextInt(elements.productList.size());
+        WebElement ramElement=elements.productList1;
+        Select ramElement2=new Select(ramElement);
+        Thread.sleep(2000);
+        ramElement2.selectByIndex(ramIndex);
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(elements.hddRadioButtons.size());
+        elements.hddRadioButtons.get(randomIndex).click();
+        Thread.sleep(2000);
+        elements.addToCart.click();
+        Assert.assertTrue(true,"The product has been added to your shopping cart");
+
+        }
+
+ @AfterClass
     public void close() {
         driver.quit();
     }

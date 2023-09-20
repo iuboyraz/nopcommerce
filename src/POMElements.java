@@ -12,7 +12,7 @@ public class POMElements {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "(//div[@class='header-links']//a)[2]")
+    @FindBy(linkText = "Log in")
     public WebElement login;
 
     @FindBy(id = "Email")
@@ -24,25 +24,27 @@ public class POMElements {
     @FindBy(xpath = "//button[@class='button-1 login-button']")
     public WebElement loginButton;
 
-    @FindBy(xpath = "//input[@id='small-searchterms']")
-    public WebElement searchInput;
+    @FindBy(linkText = "Computers")
+    public WebElement computers;
 
-    @FindBy(xpath = "//div[@class='details']//a")
-    public WebElement bookName;
+    @FindBy(linkText ="Desktops")
+    public WebElement desktop;
 
-    @FindBy(xpath = "//*[@class='top-menu notmobile']/li/a")
-    public List<WebElement> tabMenuList ;
+    @FindBy(xpath = "//a[contains(text(), 'Build your own computer')]")
+    public WebElement buildComputer ;
 
-    @FindBy(xpath = "(//*[@class='top-menu notmobile']/li/ul)[1]//a")
-    public List<WebElement> tabMenuComputersList;
+    @FindBy(xpath = "//*[@id='product_attribute_2']//option")
+    public List<WebElement> productList;
+    @FindBy(xpath = "//*[@id='product_attribute_2']")
+    public WebElement productList1;
+    @FindBy(xpath = "//*[@id=\"product_attribute_input_3\"]//label")
+    public List<WebElement> hddRadioButtons;
 
-    @FindBy(xpath = "(//*[@class='top-menu notmobile']/li/ul)[2]//a")
-    public List<WebElement> tabMenuElectronicsList;
+    @FindBy(xpath = "//*[@id='add-to-cart-button-1']")
+    public WebElement addToCart ;
 
-    @FindBy(xpath = "(//*[@class='top-menu notmobile']/li/ul)[3]//a")
-    public List<WebElement> tabMenuApparelList;
+    @FindBy(xpath = "//*[@id='bar-notification']/div/p/text()")
+    public WebElement msg ;
 
-    @FindBy(xpath = "//*[@class='top-menu notmobile']/li//a")
-    public List<WebElement> tabMenuWithSubList;
 
 }
