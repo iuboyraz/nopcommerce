@@ -196,17 +196,83 @@ public class main {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         SoftAssert _softAssert = new SoftAssert();
 
-        for (int i = 0; i < elements.top_Menu.size(); i++) {
+        List<WebElement> top_menu = elements.top_Menu;
+        List<WebElement> computerMenu = elements.computer_List;
+        List<WebElement> electronicsMenu = elements.electronics_List;
+        List<WebElement> appealMenu = elements.apperal_List;
+        List<WebElement> allproductsList = elements.all_products; //urunler
+        List<String> name_List = new ArrayList<>();
 
-            new Actions(driver).moveToElement(elements.top_Menu.get(i)).build().perform();
 
-            for (WebElement item : elements.products_MenuItem) {
 
-                System.out.println("item.getText() = " + item.getText());
 
-            }
+        List<List<WebElement>> all_lists = new ArrayList<>(); //top menu altindaki
+        all_lists.add(computerMenu);
+        all_lists.add(electronicsMenu);
+        all_lists.add(appealMenu);
 
+        //musteri herhangi bir urun arattiginda o urun benim web sitemde bulunuyor mu?
+        List<String> costumer_product_list = new ArrayList<>();
+        costumer_product_list.add("VANQUISH 3");
+        costumer_product_list.add("Nokia Lumia 1020");
+        costumer_product_list.add("HTC One Mini Blue");
+        costumer_product_list.add("Night Visions");
+        costumer_product_list.add("Gift Card");
+        costumer_product_list.add("Lenova");
+        costumer_product_list.add("Leica");
+        costumer_product_list.add("Nikon");
+        costumer_product_list.add("Apple");
+        costumer_product_list.add("Adidas");
+        costumer_product_list.add("Obey");
+        costumer_product_list.add("Ray");
+
+        System.out.println("costumer_product_list.size() = " + costumer_product_list.size());
+
+        int costumer_Product_List_Size= costumer_product_list.size();
+        int random_Number = (int) (Math.random()*costumer_Product_List_Size);
+        System.out.println("random_Number = " + random_Number);
+
+
+
+
+
+        for (int i = 0; i < top_menu.size(); i++) {
+            wait.until(ExpectedConditions.elementToBeClickable(top_menu.get(i)));
+            top_menu.get(i).click();
         }
+
+        for (int j = 0; j < all_lists.size(); j++) {
+            for (int k = 0; k < all_lists.get(j).size(); k++) {
+                for (int n = 0; n < allproductsList.size(); n++) {
+
+                    wait.until(ExpectedConditions.elementToBeClickable(top_menu.get(j)));
+                    new Actions(driver).moveToElement(top_menu.get(j));
+
+                    js.executeScript("arguments[0].scrollIntoView(true);", all_lists.get(j).get(k));
+                    js.executeScript("arguments[0].click();", all_lists.get(j).get(k));
+
+                    js.executeScript("arguments[0].scrollIntoView(true);", allproductsList.get(n));
+                    js.executeScript("arguments[0].click();", allproductsList.get(n));
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    name_List.add(elements.all_products_name_List.getText()); //urunlerin adini tek tek aldim.
+                    // System.out.println("elements.all_products_name_List.getText() = " + elements.all_products_name_List.getText());
+                    driver.navigate().back();
+
+
+                }
+            }
+        }
+
+        for (int i = 0; i < name_List.size() ; i++) {
+            _softAssert.assertTrue(name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase()));
+        }
+
+        _softAssert.assertAll();
+
     }
 
 
