@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="mySuit" parallel="tests" thread-count="3">
-    <test name="baseTest">
+    <test name="rustam">
         <parameter name="webDriver" value="chrome"></parameter>
+        <parameter name="rustam" value="Us7computerBuilt"/>
         <parameter name="searchText" value="Adobe Photoshop CS4"></parameter>
         <parameter name="product" value="notebook"></parameter>
         <classes>

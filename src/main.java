@@ -26,8 +26,11 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.testng.Assert.assertTrue;
 
 public class main {
     public WebDriver driver;
@@ -68,7 +71,6 @@ public class main {
         ts = (TakesScreenshot) driver;
 
         elements = new POMElements(driver);
-
     }
 
     public static void SaveScreenshot(File source, String prefix) throws IOException {
@@ -87,7 +89,7 @@ public class main {
         driver.navigate().to(baseUrl);
     }
 
-    // @assigned=Umut Can G�zel
+   /* // @assigned=Umut Can Guzel
     @Test
     @Parameters("searchText")
     public void Us8Search(String searchText){
@@ -103,7 +105,7 @@ public class main {
         Assert.assertTrue(elements.bookName.getText().contains(searchText));
     }
 
-    // @assigned=�mit Boyraz
+    // @assigned=Umit Boyraz
     @Test
     void US4TabMenu01() {
         _softAssert.assertTrue(driver.getCurrentUrl().contains("https://demo.nopcommerce.com/"), "You've not accessed main page!");
@@ -186,8 +188,38 @@ public class main {
         }
         _softAssert.assertAll();
     }
+    
+    // @assigned=Rustam Rozybayev
+    @Test
+    @Parameters("rustam")
+    public void Us7computerBuilt(String ramHDD) throws InterruptedException {
+        elements.login.click();
+        elements.email.sendKeys("aliveli123@gmail.com");
+        elements.password.sendKeys("aliveli123");
+        elements.loginButton.click();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(elements.computers).perform();
+        elements.desktop.click();
+        elements.buildComputer.click();
 
-    //Selen Dilek
+        Random RAM= new Random();
+        int ramIndex= RAM.nextInt(elements.productList.size());
+        WebElement ramElement=elements.productList1;
+        Select ramElement2=new Select(ramElement);
+        Thread.sleep(2000);
+        ramElement2.selectByIndex(ramIndex);
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(elements.hddRadioButtons.size());
+        elements.hddRadioButtons.get(randomIndex).click();
+        Thread.sleep(2000);
+        elements.addToCart.click();
+        Assert.assertTrue(true,"The product has been added to your shopping cart");
+
+        }
+
+ @AfterClass
+    //@assigned=Selen Dilek
     @Test
     @Parameters("product")
     void US4TabMenu02() {
@@ -205,12 +237,8 @@ public class main {
                 System.out.println("item.getText() = " + item.getText());
 
             }
-
         }
     }
-
-
-
 
     @AfterClass
     public void close() {
