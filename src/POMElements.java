@@ -53,6 +53,23 @@ public class POMElements extends Methods {
     public List<WebElement> products_MenuItem;
 
 
+    @FindBy(xpath ="(//*[@class='top-menu notmobile']/li/ul)[1]//a")
+    public List<WebElement> computer_List;
+
+    @FindBy(xpath ="(//*[@class='top-menu notmobile']/li/ul)[2]//a")
+    public List<WebElement> electronics_List;
+
+    @FindBy(xpath ="(//*[@class='top-menu notmobile']/li/ul)[3]//a")
+    public List<WebElement> apperal_List;
+
+    @FindBy(xpath ="//div[@class='product-item']//div[@class='picture']/a")
+    public List<WebElement> all_products;
+
+    @FindBy(xpath ="//div[@class='overview']//div[@class='product-name']/h1")
+    public WebElement all_products_name_List; //bir tane adi var fakat bulamazsa null dondursun diye yazdim.
+
+
+
 
 
 }
