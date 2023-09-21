@@ -1,5 +1,4 @@
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class POMElements {
+public class POMElements extends Methods {
     public POMElements(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -45,6 +44,15 @@ public class POMElements {
 
     @FindBy(xpath = "//*[@id='bar-notification']/div/p/text()")
     public WebElement msg ;
+
+
+    @FindBy(xpath = "//div[@class='header-menu']//ul[@class='top-menu notmobile']/lia")
+    public List<WebElement> top_Menu;
+
+    @FindBy(tagName = "a")
+    public List<WebElement> products_MenuItem;
+
+
 
 
 }

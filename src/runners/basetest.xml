@@ -4,6 +4,8 @@
     <test name="rustam">
         <parameter name="webDriver" value="chrome"></parameter>
         <parameter name="rustam" value="Us7computerBuilt"/>
+        <parameter name="searchText" value="Adobe Photoshop CS4"></parameter>
+        <parameter name="product" value="notebook"></parameter>
         <classes>
             <class name="main"/>
         </classes>
