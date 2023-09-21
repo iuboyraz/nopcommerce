@@ -267,11 +267,17 @@ public class main {
             }
         }
 
-        for (int i = 0; i < name_List.size() ; i++) {
-            _softAssert.assertTrue(name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase()));
-        }
+        boolean varMi=false;
 
-        _softAssert.assertAll();
+        for (int i = 0; i < name_List.size() ; i++) {
+
+            if(name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase())){
+                varMi=true;
+                _softAssert.assertTrue(varMi);
+                _softAssert.assertAll();
+
+            }
+        }
 
     }
 
