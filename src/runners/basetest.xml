@@ -2,10 +2,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="mySuit" parallel="tests" thread-count="3">
     <test name="rustam">
+
         <parameter name="webDriver" value="chrome"></parameter>
         <parameter name="rustam" value="Us7computerBuilt"/>
         <parameter name="searchText" value="Adobe Photoshop CS4"></parameter>
         <parameter name="product" value="notebook"></parameter>
+        <groups>
+            <run>
+                <include name="UI Testing"></include>
+                <include name="Search"></include>
+                <include name="Smoke"></include>
+                <include name="Regression"></include>
+                <include name="TAB Menu"></include>
+                <include name="Siparis Testleri"></include>
+            </run>
+        </groups>
         <classes>
             <class name="main"/>
         </classes>
