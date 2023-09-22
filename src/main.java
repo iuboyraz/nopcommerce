@@ -85,14 +85,16 @@ public class main {
     }
 
     @BeforeMethod
-    void openUrl() {
-        driver.navigate().to(baseUrl);
+    void openUrl() {driver.navigate().to(baseUrl);}
+    @AfterClass
+    public void close() {
+        driver.quit();
     }
 
-   /* // @assigned=Umut Can Guzel
+   // @assigned=Umut Can Guzel
     @Test
     @Parameters("searchText")
-    public void Us8Search(String searchText){
+    public void US8Search(String searchText){
         elements.login.click();
         elements.email.sendKeys("aliveli123@gmail.com");
         elements.password.sendKeys("aliveli123");
@@ -192,7 +194,7 @@ public class main {
     // @assigned=Rustam Rozybayev
     @Test
     @Parameters("rustam")
-    public void Us7computerBuilt(String ramHDD) throws InterruptedException {
+    public void US7computerBuilt(String ramHDD) throws InterruptedException {
         elements.login.click();
         elements.email.sendKeys("aliveli123@gmail.com");
         elements.password.sendKeys("aliveli123");
@@ -215,10 +217,8 @@ public class main {
         Thread.sleep(2000);
         elements.addToCart.click();
         Assert.assertTrue(true,"The product has been added to your shopping cart");
-
         }
 
- @AfterClass
     //@assigned=Selen Dilek
     @Test
     @Parameters("product")
@@ -234,10 +234,6 @@ public class main {
         List<WebElement> appealMenu = elements.apperal_List;
         List<WebElement> allproductsList = elements.all_products; //urunler
         List<String> name_List = new ArrayList<>();
-
-
-
-
         List<List<WebElement>> all_lists = new ArrayList<>(); //top menu altindaki
         all_lists.add(computerMenu);
         all_lists.add(electronicsMenu);
@@ -264,10 +260,6 @@ public class main {
         int random_Number = (int) (Math.random()*costumer_Product_List_Size);
         System.out.println("random_Number = " + random_Number);
 
-
-
-
-
         for (int i = 0; i < top_menu.size(); i++) {
             wait.until(ExpectedConditions.elementToBeClickable(top_menu.get(i)));
             top_menu.get(i).click();
@@ -293,16 +285,13 @@ public class main {
                     name_List.add(elements.all_products_name_List.getText()); //urunlerin adini tek tek aldim.
                     // System.out.println("elements.all_products_name_List.getText() = " + elements.all_products_name_List.getText());
                     driver.navigate().back();
-
-
                 }
             }
-
         }
 
         boolean varMi=false;
 
-        for (int i = 0; i < name_List.size() ; i++) {
+        for (int i = 0; i < name_List.size() ; 
 
             if(name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase())){
                 varMi=true;
@@ -311,12 +300,9 @@ public class main {
 
             }
         }
+            _softAssert.assertTrue(name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase()));
+        }
+        _softAssert.assertAll()
 
     }
-
-    @AfterClass
-    public void close() {
-        driver.quit();
-    }
-
 }

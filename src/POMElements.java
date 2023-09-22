@@ -34,8 +34,10 @@ public class POMElements extends Methods {
 
     @FindBy(xpath = "//*[@id='product_attribute_2']//option")
     public List<WebElement> productList;
+
     @FindBy(xpath = "//*[@id='product_attribute_2']")
     public WebElement productList1;
+
     @FindBy(xpath = "//*[@id=\"product_attribute_input_3\"]//label")
     public List<WebElement> hddRadioButtons;
 
@@ -45,13 +47,11 @@ public class POMElements extends Methods {
     @FindBy(xpath = "//*[@id='bar-notification']/div/p/text()")
     public WebElement msg ;
 
-
     @FindBy(xpath = "//div[@class='header-menu']//ul[@class='top-menu notmobile']/lia")
     public List<WebElement> top_Menu;
 
     @FindBy(tagName = "a")
     public List<WebElement> products_MenuItem;
-
 
     @FindBy(xpath ="(//*[@class='top-menu notmobile']/li/ul)[1]//a")
     public List<WebElement> computer_List;
@@ -67,6 +67,24 @@ public class POMElements extends Methods {
 
     @FindBy(xpath ="//div[@class='overview']//div[@class='product-name']/h1")
     public WebElement all_products_name_List; //bir tane adi var fakat bulamazsa null dondursun diye yazdim.
+
+    @FindBy(xpath = "//input[@id='small-searchterms']")
+    public WebElement searchInput;
+
+    @FindBy(xpath = "//div[@class='details']//a")
+    public WebElement bookName;
+
+    @FindBy(xpath = "//*[@class='top-menu notmobile']/li/a")
+    public List<WebElement> tabMenuList ;
+
+    @FindBy(xpath = "(//*[@class='top-menu notmobile']/li/ul)[1]//a")
+    public List<WebElement> tabMenuComputersList;
+
+    @FindBy(xpath = "(//*[@class='top-menu notmobile']/li/ul)[2]//a")
+    public List<WebElement> tabMenuElectronicsList;
+
+    @FindBy(xpath = "(//*[@class='top-menu notmobile']/li/ul)[3]//a")
+    public List<WebElement> tabMenuApparelList;
 
 
 
