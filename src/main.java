@@ -86,21 +86,22 @@ public class main {
 
     @BeforeMethod
     void openUrl() {driver.navigate().to(baseUrl);}
+
     @AfterClass
     public void close() {
         driver.quit();
     }
 
-   // @assigned=Umut Can Guzel
-    @Test
+    // @assigned=Umut Can Guzel
+    @Test(groups = {"UI Testing", "Search", "Smoke", "Regression"})
     @Parameters("searchText")
-    public void US8Search(String searchText){
+    public void US8Search(String searchText) {
         elements.login.click();
         elements.email.sendKeys("aliveli123@gmail.com");
         elements.password.sendKeys("aliveli123");
         elements.loginButton.click();
-        elements.searchInput.sendKeys(searchText+Keys.ENTER);
-        JavascriptExecutor js= (JavascriptExecutor) driver;
+        elements.searchInput.sendKeys(searchText + Keys.ENTER);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, 250);");
         elements.bookName.getText();
 
@@ -108,7 +109,7 @@ public class main {
     }
 
     // @assigned=Umit Boyraz
-    @Test
+    @Test(groups = {"UI Testing", "TAB Menu"})
     void US4TabMenu01() {
         _softAssert.assertTrue(driver.getCurrentUrl().contains("https://demo.nopcommerce.com/"), "You've not accessed main page!");
 
@@ -138,15 +139,14 @@ public class main {
                     driver.getCurrentUrl().toLowerCase().contains("jewelry") ||
                     driver.getCurrentUrl().toLowerCase().contains("gift-cards")) {
                 System.out.println("Tab menu web elements are directing user its own menu");
-            }
-            else {
+            } else {
                 System.out.println("Tab menu web elements are not directing user its own menu!");
             }
         }
 
         List<WebElement> tabMenuComputersList = elements.tabMenuComputersList;
 
-        for (int i = 0; i <tabMenuComputersList.size() ; i++) {
+        for (int i = 0; i < tabMenuComputersList.size(); i++) {
             wait.until(ExpectedConditions.visibilityOf(actualTabMenu.get(0)));
             new Actions(driver).moveToElement(actualTabMenu.get(0)).build().perform();
             tabMenuComputersList.get(i).click();
@@ -161,7 +161,7 @@ public class main {
 
         List<WebElement> tabMenuElectronicsList = elements.tabMenuElectronicsList;
 
-        for (int i = 0; i <tabMenuElectronicsList.size() ; i++) {
+        for (int i = 0; i < tabMenuElectronicsList.size(); i++) {
             wait.until(ExpectedConditions.visibilityOf(actualTabMenu.get(1)));
             new Actions(driver).moveToElement(actualTabMenu.get(1)).build().perform();
             tabMenuElectronicsList.get(i).click();
@@ -176,7 +176,7 @@ public class main {
 
         List<WebElement> tabMenuApparelList = elements.tabMenuApparelList;
 
-        for (int i = 0; i <tabMenuApparelList.size() ; i++) {
+        for (int i = 0; i < tabMenuApparelList.size(); i++) {
             wait.until(ExpectedConditions.visibilityOf(actualTabMenu.get(2)));
             new Actions(driver).moveToElement(actualTabMenu.get(2)).build().perform();
             tabMenuApparelList.get(i).click();
@@ -190,9 +190,9 @@ public class main {
         }
         _softAssert.assertAll();
     }
-    
+
     // @assigned=Rustam Rozybayev
-    @Test
+    @Test(groups = {"UI Testing", "TAB Menu", "Siparis Testleri"})
     @Parameters("rustam")
     public void US7computerBuilt(String ramHDD) throws InterruptedException {
         elements.login.click();
@@ -204,10 +204,10 @@ public class main {
         elements.desktop.click();
         elements.buildComputer.click();
 
-        Random RAM= new Random();
-        int ramIndex= RAM.nextInt(elements.productList.size());
-        WebElement ramElement=elements.productList1;
-        Select ramElement2=new Select(ramElement);
+        Random RAM = new Random();
+        int ramIndex = RAM.nextInt(elements.productList.size());
+        WebElement ramElement = elements.productList1;
+        Select ramElement2 = new Select(ramElement);
         Thread.sleep(2000);
         ramElement2.selectByIndex(ramIndex);
 
@@ -216,11 +216,11 @@ public class main {
         elements.hddRadioButtons.get(randomIndex).click();
         Thread.sleep(2000);
         elements.addToCart.click();
-        Assert.assertTrue(true,"The product has been added to your shopping cart");
-        }
+        Assert.assertTrue(true, "The product has been added to your shopping cart");
+    }
 
     //@assigned=Selen Dilek
-    @Test
+    @Test(groups = {"UI Testing", "TAB Menu", "Search", "Regression"})
     @Parameters("product")
     void US4TabMenu02() {
 
@@ -256,8 +256,8 @@ public class main {
 
         System.out.println("costumer_product_list.size() = " + costumer_product_list.size());
 
-        int costumer_Product_List_Size= costumer_product_list.size();
-        int random_Number = (int) (Math.random()*costumer_Product_List_Size);
+        int costumer_Product_List_Size = costumer_product_list.size();
+        int random_Number = (int) (Math.random() * costumer_Product_List_Size);
         System.out.println("random_Number = " + random_Number);
 
         for (int i = 0; i < top_menu.size(); i++) {
@@ -289,19 +289,19 @@ public class main {
             }
         }
 
-        boolean varMi=false;
+        boolean varMi = false;
 
-        for (int i = 0; i < name_List.size(); i++){
+        for (int i = 0; i < name_List.size(); i++) {
 
-            if(name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase())){
-                varMi=true;
+            if (name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase())) {
+                varMi = true;
                 _softAssert.assertTrue(varMi);
                 _softAssert.assertAll();
                 _softAssert.assertTrue(name_List.get(i).toLowerCase().contains(costumer_product_list.get(random_Number).toLowerCase()));
                 _softAssert.assertAll();
             }
         }
-        }
+    }
 }
 
 
