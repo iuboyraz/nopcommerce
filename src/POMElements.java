@@ -12,7 +12,7 @@ public class POMElements {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "(//div[@class='header-links']//a)[2]")
+    @FindBy(linkText = "Log in")
     public WebElement login;
 
     @FindBy(id = "Email")
@@ -24,9 +24,30 @@ public class POMElements {
     @FindBy(xpath = "//button[@class='button-1 login-button']")
     public WebElement loginButton;
 
+
+    @FindBy(xpath = "//div[@class='header-menu']//ul[@class='top-menu notmobile']/li[7]")
+    public WebElement top_Menu;
+
+
     @FindBy(xpath = "//input[@id='small-searchterms']")
     public WebElement searchInput;
 
     @FindBy(xpath = "//div[@class='details']//a")
     public WebElement bookName;
+
+    @FindBy(css = "[class='item-box']")
+    public List<WebElement> add_giftcard;
+
+    @FindBy(className = "recipient-name")
+    public WebElement recipientName;
+    @FindBy(className = "sender-name")
+    public WebElement senderName;
+    @FindBy(css = "[class=\"bar-notification success\"]")
+    public WebElement successMessage;
+
+    @FindBy(xpath = "//div[@style='display: block;']/p")
+    public WebElement warning_message;
+
+    @FindBy(css = "[type='button']")
+    public WebElement add_to_cart;
 }

@@ -1,15 +1,13 @@
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.PageFactoryFinder;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -22,7 +20,6 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +29,8 @@ public class main {
     public String baseUrl = "https://demo.nopcommerce.com/";
     public TakesScreenshot ts;
     public POMElements elements;
+    SoftAssert _softAssert = new SoftAssert();
+
 
     @BeforeClass
     @Parameters("webDriver")
@@ -86,12 +85,32 @@ public class main {
     void openUri() {
         driver.navigate().to(baseUrl);
     }
-
-
     @Test
-    public void test01(){
+    @Parameters("searchText")
+    void US5_GIFT01() {
+ _softAssert.assertTrue(driver.getCurrentUrl().contains("https://demo.nopcommerce.com/"), "You've not accessed HOME page!");
 
-    }
+
+        Assert.assertTrue(elements.top_Menu.getText().contains("Gift"), "tab menü bulunamadı");
+        elements.top_Menu.click();
+
+    int giftRandom = (int) (Math.random() * elements.add_giftcard.size());
+        elements.add_giftcard.get(giftRandom).click();
+
+        elements.add_to_cart.click();
+        Assert.assertTrue(elements.warning_message.getText().contains("Enter valid"));
+
+        elements.recipientName.sendKeys("ali");
+        elements.senderName.sendKeys("cabbar");
+        elements.add_to_cart.click();
+
+        Assert.assertTrue(elements.successMessage.getText().contains("shopping cart"));
+
+
+        _softAssert.assertAll();
+
+}
+
 
     @AfterClass
     public void close() {
