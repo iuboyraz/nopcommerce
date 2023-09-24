@@ -91,6 +91,34 @@ public class main {
     public void close() {
         driver.quit();
     }
+    @Test
+    @Parameters("searchText")
+    void US5_GIFT01() {
+
+        _softAssert.assertTrue(driver.getCurrentUrl().contains("https://demo.nopcommerce.com/"), "You've not accessed HOME page!");
+
+
+        Assert.assertTrue(elements.top_Menu1.getText().contains("Gift"), "tab menü bulunamadı");
+        elements.top_Menu1.click();
+
+        int giftRandom = (int) (Math.random() * elements.add_giftcard.size());
+        elements.add_giftcard.get(giftRandom).click();
+
+        elements.add_to_cart.click();
+        Assert.assertTrue(elements.warning_message.getText().contains("Enter valid"));
+
+        elements.recipientName.sendKeys("ali");
+        elements.senderName.sendKeys("cabbar");
+        elements.add_to_cart.click();
+
+        Assert.assertTrue(elements.successMessage.getText().contains("shopping cart"));
+
+
+        _softAssert.assertAll();
+
+    }
+
+
 
     // @assigned=Umut Can Guzel
     @Test(groups = {"UI Testing", "Search", "Smoke", "Regression"})
@@ -285,7 +313,6 @@ public class main {
                     name_List.add(elements.all_products_name_List.getText()); //urunlerin adini tek tek aldim.
                     // System.out.println("elements.all_products_name_List.getText() = " + elements.all_products_name_List.getText());
                     driver.navigate().back();
-
                 }
             }
         }
