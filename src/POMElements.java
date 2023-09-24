@@ -87,7 +87,22 @@ public class POMElements extends Methods {
     public List<WebElement> tabMenuApparelList;
 
 
+    @FindBy(css = "[class='item-box']")
+    public List<WebElement> add_giftcard ;
 
+    @FindBy(className = "recipient-name")
+    public WebElement recipientName ;
+    @FindBy(className = "sender-name")
+    public WebElement senderName ;
+    @FindBy(css = "[class=\"bar-notification success\"]")
+    public WebElement successMessage ;
 
+    @FindBy(xpath = "//div[@style='display: block;']/p")
+    public WebElement warning_message ;
+
+    @FindBy(css= "[type='button']")
+    public WebElement  add_to_cart ;
+    @FindBy(xpath = "//div[@class='header-menu']//ul[@class='top-menu notmobile']/li[7]")
+    public WebElement top_Menu1;
 
 }
