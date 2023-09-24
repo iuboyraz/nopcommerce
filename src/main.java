@@ -285,6 +285,7 @@ public class main {
                     name_List.add(elements.all_products_name_List.getText()); //urunlerin adini tek tek aldim.
                     // System.out.println("elements.all_products_name_List.getText() = " + elements.all_products_name_List.getText());
                     driver.navigate().back();
+
                 }
             }
         }
